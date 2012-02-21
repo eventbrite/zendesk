@@ -190,4 +190,77 @@ mapping_table = {
         'method': 'GET',
         'status': 200,
     },
+    # Rest API: Forums
+    'show_forum': {
+        'path': '/forums/{{forum_id}}.json',
+        'method': 'GET',
+        'status': 200
+    },
+    'list_forums': {
+        'path': '/forums.json',
+        'method': 'GET',
+        'status': 200
+    },
+    'create_forum': {
+        'path': '/forums.json',
+        'method': 'POST',
+        'status': 201
+    },
+    'update_forum': {
+        'path': '/forums/{{forum_id}}.json',
+        'method': 'PUT',
+        'status': 200
+    },
+    'delete_forum': {
+        'path': '/forums/{{forum_id}}.json',
+        'method': 'DELETE',
+        'status': 200
+    },
+    # Rest API: Forum Entries (topics)
+    'show_entry': {
+        'path': '/entries/{{entry_id}}.json',
+        'method': 'GET',
+        'status': 200
+    },
+    'list_entries': {
+        'path': '/forums/{{forum_id}}/entries.json',
+        'method': 'GET',
+        'status': 200
+    },
+    'create_entry': {
+        'path': '/entries.json',
+        'method': 'POST',
+        'status': 201
+    },
+    'update_entry': {
+        'path': '/entries/{{entry_id}}.json',
+        'method': 'PUT',
+        'status': 200
+    },
+    'delete_entry': {
+        'path': '/entries/{{entry_id}}.json',
+        'method': 'DELETE',
+        'status': 200
+    },
+    # Rest API: Forum posts
+    'list_posts': {
+        'path': '/entries/{{entry_id}}/posts.json',
+        'method': 'GET',
+        'status': 200
+    },
+    'create_post': {
+        'path': '/posts.json',
+        'method': 'POST',
+        'status': 201
+    },
+    'update_post': {
+        'path': '/posts/{{post_id}}.json',
+        'method': 'PUT',
+        'status': 200
+    },
+    'delete_post': {
+        'path': '/posts/{{post_id}}.json',
+        'method': 'DELETE',
+        'status': 200
+    },
 }
