@@ -187,6 +187,37 @@ mapping_table = {
         'method': 'GET',
         'status': 200,
     },
+    # Rest API: Categories
+    'show_category': {
+        'path': '/api/v2/categories/{{category_id}}.json',
+        'method': 'GET',
+        'status': 200
+    },
+    'list_categories': {
+        'path': '/api/v2/categories.json',
+        'method': 'GET',
+        'status': 200
+    },
+    'list_category_forums': {
+        'path': '/api/v2/categories/{{category_id}}/forums.json',
+        'method': 'GET',
+        'status': 200
+    },
+    'create_category': {
+        'path': '/api/v2/categories.json',
+        'method': 'POST',
+        'status': 201
+    },
+    'update_category': {
+        'path': '/api/v2/categories/{{category_id}}.json',
+        'method': 'PUT',
+        'status': 200
+    },
+    'delete_category': {
+        'path': '/api/v2/categories/{{category_id}}.json',
+        'method': 'DELETE',
+        'status': 200
+    },
     # Rest API: Forums
     'show_forum': {
         'path': '/api/v2/forums/{{forum_id}}.json',
