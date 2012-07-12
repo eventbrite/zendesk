@@ -107,8 +107,8 @@ mapping_table = {
         'status': 200,
     },
     'search_users': {
-        'path': '/api/v2/users.json',
-        'valid_params': ('query', 'external_id', 'role', 'page'),
+        'path': '/api/v2/users/search.json',
+        'valid_params': ('query', 'external_id'),
         'method': 'GET',
         'status': 200,
     },
