@@ -94,6 +94,8 @@ class Zendesk(object):
         self.data = None
 
         # Set attributes necessary for API
+        if zendesk_url[-1:] == "/": # API will fail if there's a trailing slash
+            zendesk_url = zendesk_url[:-1]
         self.zendesk_url = zendesk_url
         self.zendesk_username = zendesk_username
         if use_api_token:
