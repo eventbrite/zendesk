@@ -92,6 +92,17 @@ mapping_table = {
         'method': 'DELETE',
         'status': 200,
     },
+    # Rest API: Audits
+    'list_audits': {
+        'path': '/api/v2/tickets/{{ticket_id}}/audits.json',
+        'method': 'GET',
+        'status': 200,
+    },
+    'show_audit': {
+        'path': '/api/v2/tickets/{{ticket_id}}/audits/{{audit_id}}.json',
+        'method': 'GET',
+        'status': 200,
+    },
     # Rest API: Attachment
     'create_attachment': {
         'path': '/api/v2/uploads.json',
