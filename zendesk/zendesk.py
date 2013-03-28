@@ -19,6 +19,7 @@
     FORUMS, ENTRIES, POSTS have not yet been implemented
 
 """
+import types
 
 __author__ = "Max Gutman <max@eventbrite.com>"
 __version__ = "1.1.0"
@@ -66,6 +67,22 @@ def get_id_from_url(url):
     match = re_identifier.match(url)
     if match and match.group('identifier'):
         return match.group('identifier')
+
+
+def format_lists(kwargs):
+    for key,value in kwargs.iteritems():
+        kwargs[key] = format_list(value)
+    return kwargs
+
+
+def format_list(values):
+    if isinstance(values, types.ListType):
+        formatted_values = ""
+        for value in values:
+            formatted_values += str(value) + ','
+        return formatted_values[:-1]
+    else:
+        return values
 
 
 class Zendesk(object):
@@ -172,7 +189,7 @@ class Zendesk(object):
                     raise TypeError("%s() got an unexpected keyword argument "
                                     "'%s'" % (api_call, kw))
             else:
-                url += '?' + urllib.urlencode(kwargs)
+                url += '?' + urllib.urlencode(format_lists(kwargs))
 
             # the 'search' endpoint in an open Zendesk site doesn't return a 401
             # to force authentication. Inject the credentials in the headers to
@@ -201,6 +218,7 @@ class Zendesk(object):
 
         # Execute dynamic method and pass in keyword args as data to API call
         return call.__get__(self)
+
 
     @staticmethod
     def _response_handler(response, content, status):
