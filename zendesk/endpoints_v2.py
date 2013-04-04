@@ -82,7 +82,7 @@ mapping_table = {
         'path': '/ticket_fields/{{ticket_field_id}}.json',
         'method': 'DELETE',
     },
-    
+
     # Views
     'list_views': {
         'path': '/views.json',
@@ -317,28 +317,28 @@ mapping_table = {
     },
 
     # Organizations
-    'list_organzations': {
+    'list_organizations': {
         'path': '/organizations.json',
         'method': 'GET',
     },
-    'autocomplete_organzations': {
+    'autocomplete_organizations': {
         'path': '/organizations/autocomplete.json',
         'valid_params': ['name'],
         'method': 'GET',
     },
-    'show_organzation': {
+    'show_organization': {
         'path': '/organizations/{{organization_id}}.json',
         'method': 'GET',
     },
-    'create_organzation': {
+    'create_organization': {
         'path': '/organizations.json',
         'method': 'POST',
     },
-    'update_organzation': {
-        'path': '/organizations.json',
+    'update_organization': {
+        'path': '/organizations/{{organization_id}}.json',
         'method': 'PUT',
     },
-    'delete_organzation': {
+    'delete_organization': {
         'path': '/organizations.json',
         'method': 'DELETE',
     },
@@ -465,7 +465,7 @@ mapping_table = {
         'path': '/topics/{{topic_id}}.json',
         'method': 'DELETE',
     },
-    
+
     # Topic Comments
     'list_topic_comments': {
         'path': '/topics/{{topic_id}}/comments.json',
