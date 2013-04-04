@@ -335,7 +335,7 @@ mapping_table = {
         'method': 'POST',
     },
     'update_organization': {
-        'path': '/organizations.json',
+        'path': '/organizations/{{organization_id}}.json',
         'method': 'PUT',
     },
     'delete_organization': {
