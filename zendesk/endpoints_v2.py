@@ -327,6 +327,7 @@ mapping_table = {
     # Organizations
     'list_organizations': {
         'path': '/organizations.json',
+        'valid_params': ('page'),
         'method': 'GET',
     },
     'autocomplete_organizations': {
