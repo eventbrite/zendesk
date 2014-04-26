@@ -11,11 +11,12 @@ mapping_table = {
     },
     'show_ticket': {
         'path': '/tickets/{{ticket_id}}.json',
+        'valid_params': ['include'],
         'method': 'GET',
     },
     'show_many_tickets': {
         'path': '/tickets/show_many.json',
-        'valid_params': ['ids'],
+        'valid_params': ['ids','include'],
         'method': 'POST'
     },
     'create_ticket': {
@@ -48,10 +49,27 @@ mapping_table = {
         'path': '/tickets/{{ticket_id}}/incidents.json',
         'method': 'GET',
     },
+    'list_organization_tickets': {
+        'path': '/organizations/{{organization_id}}/tickets.json',
+        'method': 'GET',
+    },
+    'list_user_tickets_requested': {
+        'path': '/users/{{user_id}}/tickets/requested.json',
+        'method': 'GET',
+    },
+    'list_user_tickets_ccd': {
+        'path': '/users/{{user_id}}/tickets/ccd.json',
+        'method': 'GET',
+    },
+    'list_recent_tickets': {
+        'path': '/tickets/recent.json',
+        'method': 'GET',
+    },
 
     # Ticket Audits
     'list_audits': {
         'path': '/tickets/{{ticket_id}}/audits.json',
+        'valid_params': ['include'],
         'method': 'GET',
     },
     'mark_audit_as_trusted': {
@@ -105,6 +123,11 @@ mapping_table = {
         'path': '/views/{{view_id}}/execute.json',
         'method': 'GET',
     },
+    'get_view_tickets': {
+        'path': '/views/{{view_id}}/tickets.json',
+        'valid_params': ['include'],
+        'method': 'GET',
+    },
     'preview_view': {
         'path': '/views/preview.json',
         'method': 'POST',
@@ -118,10 +141,15 @@ mapping_table = {
         'path': '/views/{{view_id}}/count.json',
         'method': 'GET',
     },
+    'create_view': {
+        'path': '/views.json',
+        'method': 'POST',
+    },
 
     # Users
     'list_users': {
         'path': '/users.json',
+        'valid_params': ['role','permission_set'],
         'method': 'GET',
     },
     'list_users_in_group': {
@@ -658,6 +686,12 @@ mapping_table = {
         'path': '/suspended_tickets/destroy_many.json',
         'valid_params' : ['ids'],
         'method': 'DELETE',
+    },
+
+    # Voice
+    'list_voice_agents_activity': {
+        'path': '/channels/voice/stats/agents_activity.json',
+        'method': 'GET',
     },
 }
 
