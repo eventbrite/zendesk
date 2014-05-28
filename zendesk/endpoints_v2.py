@@ -354,7 +354,7 @@ mapping_table = {
     # Search
     'search': {
         'path': '/search.json',
-        'valid_params': ['query'],
+        'valid_params': ['query','sort_by'],
         'method': 'GET',
     },
     'anonymous_search': {
