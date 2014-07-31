@@ -277,6 +277,11 @@ mapping_table = {
         'path': '/groups.json',
         'method': 'GET',
     },
+    'list_user_groups': {
+        'path': '/users/{{user_id}}/groups.json',
+        'valid_params': ['include'],
+        'method': 'GET',
+    },
     'list_assignable_groups': {
         'path': '/groups/assignable.json',
         'method': 'GET',
@@ -357,6 +362,7 @@ mapping_table = {
     # Organizations
     'list_organizations': {
         'path': '/organizations.json',
+        'valid_params': ['include'],
         'method': 'GET',
     },
     'autocomplete_organizations': {
