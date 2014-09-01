@@ -189,7 +189,7 @@ class Zendesk(object):
             # the 'search' endpoint in an open Zendesk site doesn't return a
             # 401 to force authentication. Inject the credentials in the
             # headers to ensure we get the results we're looking for
-            if re.match("^/search\..*", path):
+            if re.match("^.*\/search\..*", path):
                 self.headers["Authorization"] = "Basic %s" % (
                     base64.b64encode(self.zendesk_username + ':' +
                                      self.zendesk_password))
