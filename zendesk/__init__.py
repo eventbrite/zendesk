@@ -1,2 +1,2 @@
-from zendesk import *
-from endpoints import *
+from zendesk.zendesk import *
+from zendesk.endpoints import *
