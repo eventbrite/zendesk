@@ -660,7 +660,7 @@ mapping_table = {
 }
 
 # Patch mapping table with correct HTTP Status expected
-for method, api_map in mapping_table.iteritems():
+for method, api_map in mapping_table.items():
     status = 200
     if method.startswith('create_'):
         status = 201
