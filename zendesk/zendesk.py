@@ -40,6 +40,7 @@ V2_COLLECTION_PARAMS = [
         'per_page',
         'sort_order',
     ]
+PREEMPTIVE_AUTH = False
 
 class ZendeskError(Exception):
     def __init__(self, msg, error_code=None):
@@ -81,7 +82,7 @@ class Zendesk(object):
 
     def __init__(self, zendesk_url, zendesk_username=None,
                  zendesk_password=None, use_api_token=False, headers=None,
-                 client_args={}, api_version=1):
+                 client_args={}, api_version=1, preemptive_auth=PREEMPTIVE_AUTH):
         """
         Instantiates an instance of Zendesk. Takes optional parameters for
         HTTP Basic Authentication
@@ -132,6 +133,8 @@ class Zendesk(object):
         else:
             raise ValueError("Unsupported Zendesk API Version: %d" %
                     (self.api_version,))
+
+        self.preemptive_auth = preemptive_auth
 
 
     def __getattr__(self, api_call):
@@ -186,7 +189,7 @@ class Zendesk(object):
             # the 'search' endpoint in an open Zendesk site doesn't return a 401
             # to force authentication. Inject the credentials in the headers to
             # ensure we get the results we're looking for
-            if re.match("^/search\..*", path):
+            if self.preemptive_auth or re.match("^/search\..*", path):
                 self.headers["Authorization"] = "Basic %s" % (
                     base64.b64encode(self.zendesk_username + ':' +
                                      self.zendesk_password))
