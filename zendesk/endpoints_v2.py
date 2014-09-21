@@ -77,6 +77,13 @@ mapping_table = {
         'method': 'PUT',
     },
 
+    # Ticket Comments
+    'list_ticket_comments': {
+        'path': '/tickets/{{ticket_id}}/comments.json',
+        'valid_params': ['include'],
+        'method': 'GET',
+    },
+
     # Incremental Tickets
     'export_incremental_tickets': {
         'path': '/exports/tickets.json',
@@ -698,6 +705,14 @@ mapping_table = {
     'list_voice_agents_activity': {
         'path': '/channels/voice/stats/agents_activity.json',
         'method': 'GET',
+    },
+    'show_voice_agent_availability': {
+        'path': '/channels/voice/availabilities/{{user_id}}.json',
+        'method': 'GET',
+    },
+    'update_voice_agent_availability': {
+        'path': '/channels/voice/availabilities/{{user_id}}.json',
+        'method': 'PUT',
     },
 }
 
