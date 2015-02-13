@@ -411,6 +411,54 @@ mapping_table = {
         'path': '/tags.json',
         'method': 'GET',
     },
+    'show_ticket_tags': {
+        'path': '/tickets/{{ticket_id}}/tags.json',
+        'method': 'GET',
+    },
+    'show_topic_tags': {
+        'path': '/topics/{{topic_id}}/tags.json',
+        'method': 'GET',
+    },
+    'show_organization_tags': {
+        'path': '/organizations/{{organization_id}}/tags.json',
+        'method': 'GET',
+    },
+    'set_ticket_tags': {
+        'path': '/tickets/{{ticket_id}}/tags.json',
+        'method': 'POST',
+    },
+    'set_topic_tags': {
+        'path': '/topics/{{topic_id}}/tags.json',
+        'method': 'POST',
+    },
+    'set_organization_tags': {
+        'path': '/organizations/{{organization_id}}/tags.json',
+        'method': 'POST',
+    },
+    'add_ticket_tags': {
+        'path': '/tickets/{{ticket_id}}/tags.json',
+        'method': 'PUT',
+    },
+    'add_topic_tags': {
+        'path': '/topics/{{topic_id}}/tags.json',
+        'method': 'PUT',
+    },
+    'add_organization_tags': {
+        'path': '/organizations/{{organization_id}}/tags.json',
+        'method': 'PUT',
+    },
+    'remove_ticket_tags': {
+        'path': '/tickets/{{ticket_id}}/tags.json',
+        'method': 'DELETE',
+    },
+    'remove_topic_tags': {
+        'path': '/topics/{{topic_id}}/tags.json',
+        'method': 'DELETE',
+    },
+    'remove_organization_tags': {
+        'path': '/organizations/{{organization_id}}/tags.json',
+        'method': 'DELETE',
+    },
 
     # Forums
     'list_forums': {
@@ -608,9 +656,14 @@ mapping_table = {
     },
 
     # Attachments
-    'upload_attachment': {
-        'path': '/uploads.json',
+    'create_upload': {
+        'path': '/uploads.json?filename={{file_name}}&',
         'method': 'POST',
+        'ignore_location': True,
+    },
+    'get_attachment': {
+        'path': '/attachments/{{attachment_id}}.json',
+        'method': 'GET'
     },
 
     # Job Statuses

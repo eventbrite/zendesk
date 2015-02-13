@@ -25,6 +25,8 @@ __version__ = "1.1.1"
 
 import re
 import httplib2
+import logging
+import time
 import urllib
 import base64
 try:
@@ -40,6 +42,7 @@ V2_COLLECTION_PARAMS = [
         'per_page',
         'sort_order',
     ]
+DEBUG = True
 PREEMPTIVE_AUTH = False
 
 class ZendeskError(Exception):
@@ -165,8 +168,14 @@ class Zendesk(object):
             method = api_map['method']
             status = api_map['status']
             valid_params = api_map.get('valid_params', ())
+            ignore_location = api_map.get('ignore_location', False)
             # Body can be passed from data or in args
             body = kwargs.pop('data', None) or self.data
+            binary_body = kwargs.pop('data_binary', None)
+            if binary_body:
+                self.headers['Content-Type'] = 'application/binary'
+            else:
+                self.headers['Content-Type'] = 'application/json'
             # Substitute mustache placeholders with data from keywords
             url = re.sub(
                 '\{\{(?P<m>[a-zA-Z_]+)\}\}',
@@ -197,15 +206,24 @@ class Zendesk(object):
                 del(self.headers["Authorization"])
 
             # Make an http request (data replacements are finalized)
-            response, content = \
-                    self.client.request(
-                        url,
-                        method,
-                        body=json.dumps(body),
-                        headers=self.headers
-                    )
+            if DEBUG:
+                time_before_request = time.time()
+            try:
+                response, content = \
+                        self.client.request(
+                            url,
+                            method,
+                            body=binary_body or json.dumps(body),
+                            headers=self.headers
+                        )
+            except Exception:
+                if DEBUG:
+                    time_after_request = time.time()
+                    elapsed_time = time_after_request - time_before_request
+                logging.info('Zendesk time: %s url: %s' % (str(elapsed_time),url))
+                raise
             # Use a response handler to determine success/fail
-            return self._response_handler(response, content, status)
+            return self._response_handler(response, content, status, ignore_location)
 
         # Missing method is also not defined in our mapping table
         if api_call not in self.mapping_table:
@@ -215,7 +233,7 @@ class Zendesk(object):
         return call.__get__(self)
 
     @staticmethod
-    def _response_handler(response, content, status):
+    def _response_handler(response, content, status, ignore_location):
         """
         Handle response as callback
 
@@ -235,7 +253,7 @@ class Zendesk(object):
 
         # Deserialize json content if content exist. In some cases Zendesk
         # returns ' ' strings. Also return false non strings (0, [], (), {})
-        if response.get('location'):
+        if response.get('location') and not ignore_location:
             return response.get('location')
         elif content.strip():
             return json.loads(content)
