@@ -13,6 +13,10 @@ mapping_table = {
         'path': '/tickets/{{ticket_id}}.json',
         'method': 'GET',
     },
+    'show_ticket_comments': {
+        'path': '/tickets/{{ticket_id}}/comments.json',
+        'method': 'GET',
+    },
     'show_many_tickets': {
         'path': '/tickets/show_many.json',
         'valid_params': ['ids'],
@@ -20,6 +24,10 @@ mapping_table = {
     },
     'create_ticket': {
         'path': '/tickets.json',
+        'method': 'POST',
+    },
+    'import_ticket': {
+        'path': '/imports/tickets.json',
         'method': 'POST',
     },
     'update_ticket': {
@@ -36,7 +44,7 @@ mapping_table = {
         'method': 'DELETE',
     },
     'delete_many_tickets': {
-        'path': 'tickets/destroy_many.json',
+        'path': '/tickets/destroy_many.json',
         'valid_params': ['ids'],
         'method': 'DELETE',
     },
@@ -131,12 +139,22 @@ mapping_table = {
         'method': 'GET',
     },
     'list_users_in_organization': {
-        'path': '/organization/{{organization_id}}/users.json',
+        'path': '/organizations/{{organization_id}}/users.json',
         'valid_params': ('role','page'),
         'method': 'GET',
     },
     'show_user': {
         'path': '/users/{{user_id}}.json',
+        'method': 'GET',
+    },
+    'show_user_by_external_id': {
+        'path': '/users/search.json',
+        'valid_params': ['external_id'],
+        'method': 'GET',
+    },
+    'show_many_users': {
+        'path': '/users/show_many.json',
+        'valid_params': ['ids'],
         'method': 'GET',
     },
     'create_user': {
@@ -154,6 +172,10 @@ mapping_table = {
     'delete_user': {
         'path': '/users/{{user_id}}.json',
         'method': 'DELETE',
+    },
+    'related_user': {
+        'path': '/users/{{user_id}}/related.json',
+        'method': 'GET',
     },
     'search_user': {
         'path': '/users/search.json',
@@ -286,7 +308,7 @@ mapping_table = {
         'method': 'GET',
     },
     'list_assignable_memberships_for_group': {
-        'path': 'groups/{{groups_id}}/group_memberships/assignable.json',
+        'path': '/groups/{{groups_id}}/group_memberships/assignable.json',
         'method': 'GET',
     },
     'show_membership': {
@@ -318,7 +340,7 @@ mapping_table = {
         'method': 'PUT',
     },
 
-    # Custom Agent Rules
+    # Custom Agent Roles
     'list_custom_roles': {
         'path': '/custom_roles.json',
         'method': 'GET',
@@ -332,6 +354,15 @@ mapping_table = {
     'autocomplete_organizations': {
         'path': '/organizations/autocomplete.json',
         'valid_params': ['name'],
+        'method': 'GET',
+    },
+    'show_organization_by_external_id': {
+        'path': '/organizations/search.json',
+        'valid_params': ['external_id'],
+        'method': 'GET',
+    },
+    'show_organization_tickets': {
+        'path': '/organizations/{{organization_id}}/tickets.json',
         'method': 'GET',
     },
     'show_organization': {
@@ -616,6 +647,32 @@ mapping_table = {
         'method': 'GET',
     },
 
+    # Triggers
+    'list_triggers': {
+        'path': '/triggers.json',
+        'method': 'GET',
+    },
+    'get_trigger': {
+        'path': '/triggers/{{trigger_id}}.json',
+        'method': 'GET',
+    },
+    'list_active_triggers': {
+        'path': '/triggers/active.json',
+        'method': 'GET',
+    },
+    'update_trigger': {
+        'path': '/triggers/{{trigger_id}}.json',
+        'method': 'PUT',
+    },
+    'create_trigger': {
+        'path': '/triggers/{{trigger_id}}.json',
+        'method': 'POST',
+    },
+    'delete_trigger': {
+        'path': '/triggers/{{trigger_id}}.json',
+        'method': 'DELETE',
+    },
+
     # List Satisfaction Ratings
     'list_satisfaction_ratings': {
         'path': '/satisfaction_ratings.json',
@@ -662,6 +719,6 @@ mapping_table = {
 # Patch mapping table with correct HTTP Status expected
 for method, api_map in mapping_table.iteritems():
     status = 200
-    if method.startswith('create_'):
+    if method.startswith('create_') or method.startswith('import_'):
         status = 201
     api_map['status'] = status
