@@ -1,12 +1,11 @@
-Zendesk API Wrapper for Python
-=========================================================================================
+# Zendesk API Wrapper for Python
+
 Python Zendesk is wrapper for the Zendesk API. This library provides an
 easy and flexible way for developers to communicate with their Zendesk
 account in their application. 
 
+## Requirements
 
-Requirements
------------------------------------------------------------------------------------------------------
 httplib2 is used for authentication and requests
 
     (pip install | easy_install) httplib2
@@ -15,16 +14,14 @@ simplejson is used to serialze and deserialze requests and responses
 
     (pip install | easy_install) simplejson
 
+## Installation
 
-Installation
------------------------------------------------------------------------------------------------------
 Zendesk Python Library is available on pypi, so installation should be fairly simple:
 
     (pip install | easy_install) zendesk
 
 
-Example Use
------------------------------------------------------------------------------------------------------
+## Example Use
 
 	from zendesk import Zendesk, get_id_from_url
 
@@ -70,5 +67,3 @@ Example Use
 	zendesk.delete_ticket(ticket_id=ticket_id)
 
 	# More examples in `examples` folder!
-
-
