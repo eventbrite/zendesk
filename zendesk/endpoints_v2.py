@@ -717,6 +717,7 @@ mapping_table = {
 }
 
 # Patch mapping table with correct HTTP Status expected
+# The import endpoints also returns 201 so added condition for them
 for method, api_map in mapping_table.iteritems():
     status = 200
     if method.startswith('create_') or method.startswith('import_'):
