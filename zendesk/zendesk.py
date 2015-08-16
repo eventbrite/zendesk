@@ -36,6 +36,11 @@ except:
 from httplib import responses
 from endpoints import mapping_table as mapping_table_v1
 from endpoints_v2 import mapping_table as mapping_table_v2
+try:
+    from google.appengine.api.urlfetch_errors import InternalTransientError
+except ImportError:
+    class InternalTransientError(Exception):
+        pass
 
 V2_COLLECTION_PARAMS = [
         'page',
@@ -209,13 +214,24 @@ class Zendesk(object):
             if DEBUG:
                 time_before_request = time.time()
             try:
-                response, content = \
-                        self.client.request(
-                            url,
-                            method,
-                            body=binary_body or json.dumps(body),
-                            headers=self.headers
-                        )
+                try:
+                    response, content = \
+                            self.client.request(
+                                url,
+                                method,
+                                body=binary_body or json.dumps(body),
+                                headers=self.headers
+                            )
+                except InternalTransientError as e:
+                    if DEBUG:
+                        logging.info('Retrying request once immediately due to: %s' % str(e))
+                        response, content = \
+                                self.client.request(
+                                    url,
+                                    method,
+                                    body=binary_body or json.dumps(body),
+                                    headers=self.headers
+                                )
             except Exception:
                 if DEBUG:
                     time_after_request = time.time()

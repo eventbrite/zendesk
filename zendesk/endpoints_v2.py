@@ -169,6 +169,7 @@ mapping_table = {
     },
     'show_user': {
         'path': '/users/{{user_id}}.json',
+        'valid_params': ['include'],
         'method': 'GET',
     },
     'show_many_users': {
