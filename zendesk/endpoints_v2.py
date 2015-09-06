@@ -41,6 +41,10 @@ mapping_table = {
         'valid_params': ['ids'],
         'method': 'DELETE',
     },
+    'list_ticket_related': {
+        'path': '/tickets/{{ticket_id}}/related.json',
+        'method': 'GET',
+    },
     'list_ticket_collaborators': {
         'path': '/tickets/{{ticket_id}}/collaborators.json',
         'method': 'GET',
@@ -753,6 +757,25 @@ mapping_table = {
         'path': '/suspended_tickets/destroy_many.json',
         'valid_params' : ['ids'],
         'method': 'DELETE',
+    },
+
+    # Twitter
+    'list_monitored_twitter_handles': {
+        'path': '/channels/twitter/monitored_twitter_handles.json',
+        'method': 'GET',
+    },
+    'show_monitored_twitter_handle': {
+        'path': '/channels/twitter/monitored_twitter_handles/{{monitored_twitter_handle_id}}.json',
+        'method': 'GET',
+    },
+    'create_ticket_from_tweet': {
+        'path': '/channels/twitter/tickets.json',
+        'method': 'POST',
+    },
+    'list_twitter_ticket_status': {
+        'path': '/channels/twitter/tickets/{{ticket_id}}/statuses.json',
+        'valid_params' : ['ids'],
+        'method': 'GET',
     },
 
     # Voice
