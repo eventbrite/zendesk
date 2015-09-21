@@ -47,6 +47,7 @@ mapping_table = {
     },
     'list_ticket_collaborators': {
         'path': '/tickets/{{ticket_id}}/collaborators.json',
+        'valid_params': ['include'],
         'method': 'GET',
     },
     'list_ticket_incidents': {
