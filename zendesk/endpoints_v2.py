@@ -429,6 +429,10 @@ mapping_table = {
         'path': '/organizations/{{organization_id}}/tags.json',
         'method': 'GET',
     },
+    'show_user_tags': {
+        'path': '/users/{{user_id}}/tags.json',
+        'method': 'GET',
+    },
     'set_ticket_tags': {
         'path': '/tickets/{{ticket_id}}/tags.json',
         'method': 'POST',
@@ -439,6 +443,10 @@ mapping_table = {
     },
     'set_organization_tags': {
         'path': '/organizations/{{organization_id}}/tags.json',
+        'method': 'POST',
+    },
+    'set_user_tags': {
+        'path': '/users/{{user_id}}/tags.json',
         'method': 'POST',
     },
     'add_ticket_tags': {
@@ -453,6 +461,10 @@ mapping_table = {
         'path': '/organizations/{{organization_id}}/tags.json',
         'method': 'PUT',
     },
+    'add_user_tags': {
+        'path': '/users/{{user_id}}/tags.json',
+        'method': 'PUT',
+    },
     'remove_ticket_tags': {
         'path': '/tickets/{{ticket_id}}/tags.json',
         'method': 'DELETE',
@@ -463,6 +475,10 @@ mapping_table = {
     },
     'remove_organization_tags': {
         'path': '/organizations/{{organization_id}}/tags.json',
+        'method': 'DELETE',
+    },
+    'remove_user_tags': {
+        'path': '/users/{{user_id}}/tags.json',
         'method': 'DELETE',
     },
 
@@ -791,6 +807,171 @@ mapping_table = {
     'update_voice_agent_availability': {
         'path': '/channels/voice/availabilities/{{user_id}}.json',
         'method': 'PUT',
+    },
+
+    # Help center - categories
+    'list_categories': {
+        'path': '/help_center/categories.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'list_locale_categories': {
+        'path': '/help_center/{{locale}}/categories.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'show_category': {
+        'path': '/help_center/categories/{{category_id}}.json',
+        'method': 'GET',
+    },
+    'show_locale_category': {
+        'path': '/help_center/{{locale}}/categories/{{category_id}}.json',
+        'method': 'GET',
+    },
+    'create_category': {
+        'path': '/help_center/categories.json',
+        'method': 'POST',
+    },
+    'create_locale_category': {
+        'path': '/help_center/{{locale}}/categories.json',
+        'method': 'POST',
+    },
+    'update_category': {
+        'path': '/help_center/categories/{{category_id}}.json',
+        'method': 'PUT',
+    },
+    'update_locale_category': {
+        'path': '/help_center/{{locale}}/categories/{{category_id}}.json',
+        'method': 'PUT',
+    },
+    'update_category_source_locale': {
+        'path': '/help_center/categories/{{category_id}}/source_locale.json',
+        'method': 'PUT',
+    },
+    'delete_category': {
+        'path': '/help_center/categories/{{category_id}}.json',
+        'method': 'DELETE',
+    },
+
+    # Help center - sections
+    'list_sections': {
+        'path': '/help_center/sections.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'list_locale_sections': {
+        'path': '/help_center/{{locale}}/sections.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'list_category_sections': {
+        'path': '/help_center/categories/{{category_id}}/sections.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'show_section': {
+        'path': '/help_center/sections/{{section_id}}.json',
+        'method': 'GET',
+    },
+    'show_locale_section': {
+        'path': '/help_center/{{locale}}/sections/{{section_id}}.json',
+        'method': 'GET',
+    },
+    'create_section': {
+        'path': '/help_center/categories/{{category_id}}/sections.json',
+        'method': 'POST',
+    },
+    'create_locale_section': {
+        'path': '/help_center/{{locale}}/categories/{{category_id}}/sections.json',
+        'method': 'POST',
+    },
+    'update_section': {
+        'path': '/help_center/sections/{{section_id}}.json',
+        'method': 'PUT',
+    },
+    'update_locale_section': {
+        'path': '/help_center/{{locale}}/sections/{{section_id}}.json',
+        'method': 'PUT',
+    },
+    'update_section_source_locale': {
+        'path': '/help_center/sections/{{section_id}}/source_locale.json',
+        'method': 'PUT',
+    },
+    'delete_section': {
+        'path': '/help_center/sections/{{section_id}}.json',
+        'method': 'DELETE',
+    },
+    'show_section_access_policy': {
+        'path': '/help_center/sections/{{section_id}}/access_policy.json',
+        'method': 'GET',
+    },
+    'update_section_access_policy': {
+        'path': '/help_center/sections/{{section_id}}/access_policy.json',
+        'method': 'PUT',
+    },
+
+    # Help center - articles
+    'list_articles': {
+        'path': '/help_center/articles.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'list_articles_after': {
+        'path': '/help_center/incremental/articles.json',
+        'valid_params' : ['start_time','sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'list_locale_articles': {
+        'path': '/help_center/{{locale}}/articles.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'list_category_articles': {
+        'path': '/help_center/categories/{{category_id}}/articles.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'list_section_articles': {
+        'path': '/help_center/sections/{{section_id}}/articles.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'list_user_articles': {
+        'path': '/help_center/users/{{user_id}}/articles.json',
+        'valid_params' : ['sort_by','sort_order','include'],
+        'method': 'GET',
+    },
+    'show_article': {
+        'path': '/help_center/articles/{{article_id}}.json',
+        'method': 'GET',
+    },
+    'show_locale_article': {
+        'path': '/help_center/{{locale}}/articles/{{article_id}}.json',
+        'method': 'GET',
+    },
+    'create_article': {
+        'path': '/help_center/sections/{{section_id}}/articles.json',
+        'method': 'POST',
+    },
+    'create_locale_article': {
+        'path': '/help_center/{{locale}}/sections/{{section_id}}/articles.json',
+        'method': 'POST',
+    },
+    'update_article': {
+        'path': '/help_center/articles/{{article_id}}.json',
+        'method': 'PUT',
+    },
+    'update_locale_article': {
+        'path': '/help_center/{{locale}}/articles/{{article_id}}.json',
+        'method': 'PUT',
+    },
+    'update_article_source_locale': {
+        'path': '/help_center/articles/{{article_id}}/source_locale.json',
+        'method': 'PUT',
+    },
+    'delete_article': {
+        'path': '/help_center/articles/{{article_id}}.json',
+        'method': 'DELETE',
     },
 }
 
