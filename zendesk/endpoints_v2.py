@@ -56,18 +56,27 @@ mapping_table = {
     },
     'list_organization_tickets': {
         'path': '/organizations/{{organization_id}}/tickets.json',
+        'valid_params': ['external_id'],
         'method': 'GET',
     },
     'list_user_tickets_requested': {
         'path': '/users/{{user_id}}/tickets/requested.json',
+        'valid_params': ['external_id'],
         'method': 'GET',
     },
     'list_user_tickets_ccd': {
         'path': '/users/{{user_id}}/tickets/ccd.json',
+        'valid_params': ['external_id'],
+        'method': 'GET',
+    },
+    'list_user_tickets_assigned': {
+        'path': '/users/{{user_id}}/tickets/assigned.json',
+        'valid_params': ['external_id'],
         'method': 'GET',
     },
     'list_recent_tickets': {
         'path': '/tickets/recent.json',
+        'valid_params': ['external_id'],
         'method': 'GET',
     },
 
@@ -78,7 +87,7 @@ mapping_table = {
         'method': 'GET',
     },
     'mark_audit_as_trusted': {
-        'path': '/tickets/{{ticket_id}}/audits/{{audid_id}}/trust.json',
+        'path': '/tickets/{{ticket_id}}/audits/{{audit_id}}/trust.json',
         'method': 'PUT',
     },
 
@@ -93,6 +102,12 @@ mapping_table = {
     'export_incremental_tickets': {
         'path': '/exports/tickets.json',
         'valid_params': ['start_time'],
+        'method': 'GET',
+    },
+
+    # Ticket Forms
+    'list_ticket_forms': {
+        'path': '/ticket_forms.json',
         'method': 'GET',
     },
 
@@ -127,7 +142,7 @@ mapping_table = {
         'path': '/views/active.json',
         'method': 'GET',
     },
-    'get_view': {
+    'show_view': {
         'path': '/views/{{view_id}}.json',
         'method': 'GET',
     },
@@ -135,7 +150,7 @@ mapping_table = {
         'path': '/views/{{view_id}}/execute.json',
         'method': 'GET',
     },
-    'get_view_tickets': {
+    'list_view_tickets': {
         'path': '/views/{{view_id}}/tickets.json',
         'valid_params': ['include'],
         'method': 'GET',
@@ -156,6 +171,16 @@ mapping_table = {
     'create_view': {
         'path': '/views.json',
         'method': 'POST',
+    },
+
+    # Triggers
+    'list_triggers': {
+        'path': '/triggers.json',
+        'method': 'GET',
+    },
+    'show_trigger': {
+        'path': '/triggers/{{trigger_id}}.json',
+        'method': 'GET',
     },
 
     # Users
@@ -193,6 +218,10 @@ mapping_table = {
     'update_user': {
         'path': '/users/{{user_id}}.json',
         'method': 'PUT',
+    },
+    'update_user_password': {
+        'path': '/users/{{user_id}}/password.json',
+        'method': 'POST',
     },
     'delete_user': {
         'path': '/users/{{user_id}}.json',
@@ -295,6 +324,11 @@ mapping_table = {
         'valid_params': ['include'],
         'method': 'GET',
     },
+    'list_user_group_memberships': {
+        'path': '/users/{{user_id}}/group_memberships.json',
+        'valid_params': ['include'],
+        'method': 'GET',
+    },
     'list_assignable_groups': {
         'path': '/groups/assignable.json',
         'method': 'GET',
@@ -360,6 +394,7 @@ mapping_table = {
     'delete_membership_for_user': {
         'path': '/users/{{user_id}}/group_memberships/{{group_membership_id}}.json',
         'method': 'DELETE',
+        'status': 204,
     },
     'set_default_membership_for_user': {
         'path': '/users/{{user_id}}/group_memberships/{{group_membership_id}}/make_default.json',
@@ -683,7 +718,7 @@ mapping_table = {
         'method': 'POST',
         'ignore_location': True,
     },
-    'get_attachment': {
+    'show_attachment': {
         'path': '/attachments/{{attachment_id}}.json',
         'method': 'GET'
     },
@@ -737,6 +772,7 @@ mapping_table = {
     # List Satisfaction Ratings
     'list_satisfaction_ratings': {
         'path': '/satisfaction_ratings.json',
+        'valid_params' : ['score','start_time','end_time'],
         'method': 'GET',
     },
     'list_received_satisfaction_ratings': {
@@ -769,6 +805,7 @@ mapping_table = {
     'delete_suspended_ticket': {
         'path': '/suspended_tickets/{{ticket_id}}.json',
         'method': 'DELETE',
+        'status': 204,
     },
     'delete_many_suspended_tickets': {
         'path': '/suspended_tickets/destroy_many.json',
@@ -975,6 +1012,13 @@ mapping_table = {
         'path': '/help_center/articles/{{article_id}}.json',
         'method': 'DELETE',
         'status': 204,
+    },
+
+    # Audit logs
+    'list_audit_logs': {
+        'path': '/audit_logs.json',
+        'valid_params': ['filter[source_type]','filter[source_id]','filter[actor_id]','filter[ip_address]','filter[created_at][]','sort_by','sort_order'],
+        'method': 'GET',
     },
 }
 

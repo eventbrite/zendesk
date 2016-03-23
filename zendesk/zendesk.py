@@ -80,9 +80,18 @@ def get_id_from_url(url):
 def clean_kwargs(kwargs):
     """Format the kwargs to conform to API"""
 
+    url_args = []
     for key, value in kwargs.iteritems():
         if hasattr(value, '__iter__'):
-            kwargs[key] = ','.join(map(str, value))
+            if key.endswith('[]'):
+                for v in value:
+                    url_args.append((key,v))
+            else:
+                #kwargs[key] = ','.join(map(str, value))
+                url_args.append((key,','.join(map(str, value))))
+        else:
+            url_args.append((key,value))
+    return url_args
 
 
 class Zendesk(object):
@@ -197,8 +206,8 @@ class Zendesk(object):
                     raise TypeError("%s() got an unexpected keyword argument "
                                     "'%s'" % (api_call, kw))
             else:
-                clean_kwargs(kwargs)
-                url += '?' + urllib.urlencode(kwargs)
+                url_args = clean_kwargs(kwargs)
+                url += '?' + urllib.urlencode(url_args)
 
             # the 'search' endpoint in an open Zendesk site doesn't return a 401
             # to force authentication. Inject the credentials in the headers to
@@ -264,6 +273,9 @@ class Zendesk(object):
         if not response:
             raise ZendeskError('Response Not Found')
         response_status = int(response.get('status', 0))
+        if DEBUG and response_status == 429:
+            headers = [u'{0}: {1}'.format(name,value).encode('utf-8') for (name,value) in response.iteritems()]
+            logging.info('\n'.join(headers))
         if response_status != status:
             raise ZendeskError(content, response_status)
 
