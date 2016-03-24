@@ -845,6 +845,19 @@ mapping_table = {
         'path': '/channels/voice/availabilities/{{user_id}}.json',
         'method': 'PUT',
     },
+    'display_user_to_agent': {
+        'path': '/channels/voice/agents/{{agent_id}}/users/{{user_id}}/display.json',
+        'method': 'POST',
+    },
+    'display_ticket_to_agent': {
+        'path': '/channels/voice/agents/{{agent_id}}/tickets/{{ticket_id}}/display.json',
+        'method': 'POST',
+    },
+    'create_ticket_from_voice': {
+        'path': '/channels/voice/tickets.json',
+        'method': 'POST',
+    },
+
 
     # Help center - categories
     'list_categories': {
