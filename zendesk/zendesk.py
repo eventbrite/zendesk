@@ -245,7 +245,7 @@ class Zendesk(object):
                 if DEBUG:
                     time_after_request = time.time()
                     elapsed_time = time_after_request - time_before_request
-                logging.info('Zendesk time: %s url: %s' % (str(elapsed_time),url))
+                    logging.info('Zendesk time: %s url: %s' % (str(elapsed_time),url))
                 raise
             # Use a response handler to determine success/fail
             return self._response_handler(response, content, status, ignore_location)

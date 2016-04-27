@@ -178,8 +178,26 @@ mapping_table = {
         'path': '/triggers.json',
         'method': 'GET',
     },
+    'list_active_triggers': {
+        'path': '/triggers/active.json',
+        'method': 'GET',
+    },
     'show_trigger': {
         'path': '/triggers/{{trigger_id}}.json',
+        'method': 'GET',
+    },
+
+    # Automations
+    'list_automations': {
+        'path': '/automations.json',
+        'method': 'GET',
+    },
+    'list_active_automations': {
+        'path': '/automations/active.json',
+        'method': 'GET',
+    },
+    'show_automation': {
+        'path': '/automations/{{automation_id}}.json',
         'method': 'GET',
     },
 
