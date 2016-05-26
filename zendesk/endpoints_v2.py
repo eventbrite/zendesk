@@ -256,6 +256,28 @@ mapping_table = {
         'method': 'GET',
     },
 
+    # User Fields
+    'list_user_fields': {
+        'path': '/user_fields.json',
+        'method': 'GET',
+    },
+    'show_user_field': {
+        'path': '/user_fields/{{user_field_id}}.json',
+        'method': 'GET',
+    },
+    'create_user_field': {
+        'path': '/user_fields.json',
+        'method': 'POST',
+    },
+    'update_user_field': {
+        'path': '/user_fields/{{user_field_id}}.json',
+        'method': 'PUT',
+    },
+    'delete_user_field': {
+        'path': '/user_fields/{{user_field_id}}.json',
+        'method': 'DELETE',
+    },
+
     # Requests
     'list_requests': {
         'path': '/requests.json',
@@ -454,6 +476,28 @@ mapping_table = {
         'method': 'DELETE',
     },
 
+    # Organization Fields
+    'list_organization_fields': {
+        'path': '/organization_fields.json',
+        'method': 'GET',
+    },
+    'show_organization_field': {
+        'path': '/organization_fields/{{organization_field_id}}.json',
+        'method': 'GET',
+    },
+    'create_organization_field': {
+        'path': '/organization_fields.json',
+        'method': 'POST',
+    },
+    'update_organization_field': {
+        'path': '/organization_fields/{{organization_field_id}}.json',
+        'method': 'PUT',
+    },
+    'delete_organization_field': {
+        'path': '/organization_fields/{{organization_field_id}}.json',
+        'method': 'DELETE',
+    },
+
     # Search
     'search': {
         'path': '/search.json',
@@ -628,7 +672,7 @@ mapping_table = {
         'valid_params': ['ids'],
         'method': 'GET',
     },
-    'create_topics': {
+    'create_topic': {
         'path': '/topics.json',
         'method': 'POST',
     },
@@ -658,7 +702,7 @@ mapping_table = {
         'path': '/users/{{user_id}}/top_comments/{{comment_id}}.json',
         'method': 'GET',
     },
-    'create_topic_comments': {
+    'create_topic_comment': {
         'path': '/topics/{{topic_id}}/comments.json',
         'method': 'POST',
     },
@@ -877,7 +921,6 @@ mapping_table = {
         'method': 'POST',
     },
 
-
     # Help center - categories
     'list_categories': {
         'path': '/help_center/categories.json',
@@ -1052,6 +1095,53 @@ mapping_table = {
         'valid_params': ['filter[source_type]','filter[source_id]','filter[actor_id]','filter[ip_address]','filter[created_at][]','sort_by','sort_order'],
         'method': 'GET',
     },
+
+    # Schedules
+    'list_schedules': {
+        'path': '/business_hours/schedules.json',
+        'method': 'GET',
+    },
+    'show_schedule': {
+        'path': '/business_hours/schedules/{{schedule_id}}.json',
+        'method': 'GET',
+    },
+    'create_schedule': {
+        'path': '/business_hours/schedules.json',
+        'method': 'POST',
+    },
+    'update_schedule': {
+        'path': '/business_hours/schedules/{{schedule_id}}.json',
+        'method': 'PUT',
+    },
+    'delete_schedule': {
+        'path': '/business_hours/schedules/{{schedule_id}}.json',
+        'method': 'DELETE',
+    },
+    'update_schedule_workweek': {
+        'path': '/business_hours/schedules/{{schedule_id}}/workweek.json',
+        'method': 'PUT',
+    },
+    'list_holidays': {
+        'path': '/business_hours/schedules/{{schedule_id}}/holidays.json',
+        'method': 'GET',
+    },
+    'show_holiday': {
+        'path': '/business_hours/schedules/{{schedule_id}}/holidays/{{holiday_id}}.json',
+        'method': 'GET',
+    },
+    'create_holiday': {
+        'path': '/business_hours/schedules/{{schedule_id}}/holidays.json',
+        'method': 'POST',
+    },
+    'update_holiday': {
+        'path': '/business_hours/schedules/{{schedule_id}}/holidays/{{holiday_id}}.json',
+        'method': 'PUT',
+    },
+    'delete_holiday': {
+        'path': '/business_hours/schedules/{{schedule_id}}/holidays/{{holiday_id}}.json',
+        'method': 'DELETE',
+    },
+
 }
 
 # Patch mapping table with correct HTTP Status expected
