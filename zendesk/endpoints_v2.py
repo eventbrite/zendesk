@@ -365,8 +365,18 @@ mapping_table = {
         'valid_params': ['include'],
         'method': 'GET',
     },
+    'list_group_memberships': {
+        'path': '/group_memberships.json',
+        'valid_params': ['include'],
+        'method': 'GET',
+    },
     'list_user_group_memberships': {
         'path': '/users/{{user_id}}/group_memberships.json',
+        'valid_params': ['include'],
+        'method': 'GET',
+    },
+    'list_group_group_memberships': {
+        'path': '/groups/{{group_id}}/memberships.json',
         'valid_params': ['include'],
         'method': 'GET',
     },
@@ -474,6 +484,11 @@ mapping_table = {
     'delete_organization': {
         'path': '/organizations/{{organization_id}}.json',
         'method': 'DELETE',
+    },
+    'search_organization': {
+        'path': '/organizations/search.json',
+        'valid_params': ['external_id'],
+        'method': 'GET',
     },
 
     # Organization Fields

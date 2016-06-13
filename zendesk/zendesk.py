@@ -131,7 +131,7 @@ class Zendesk(object):
         if self.headers is None:
             self.headers = {
                 'User-agent': 'Zendesk Python Library v%s' % __version__,
-                'Content-Type': 'application/json'
+                #'Content-Type': 'application/json'
             }
 
         # Set http client and authentication
@@ -186,10 +186,12 @@ class Zendesk(object):
             # Body can be passed from data or in args
             body = kwargs.pop('data', None) or self.data
             binary_body = kwargs.pop('data_binary', None)
-            if binary_body:
+            string_body = None
+            if binary_body is not None:
                 self.headers['Content-Type'] = 'application/binary'
-            else:
+            elif body is not None:
                 self.headers['Content-Type'] = 'application/json'
+                string_body = json.dumps(body)
             # Substitute mustache placeholders with data from keywords
             url = re.sub(
                 '\{\{(?P<m>[a-zA-Z_]+)\}\}',
@@ -228,19 +230,19 @@ class Zendesk(object):
                             self.client.request(
                                 url,
                                 method,
-                                body=binary_body or json.dumps(body),
+                                body=binary_body or string_body,
                                 headers=self.headers
                             )
                 except InternalTransientError as e:
                     if DEBUG:
                         logging.info('Retrying request once immediately due to: %s' % str(e))
-                        response, content = \
-                                self.client.request(
-                                    url,
-                                    method,
-                                    body=binary_body or json.dumps(body),
-                                    headers=self.headers
-                                )
+                    response, content = \
+                            self.client.request(
+                                url,
+                                method,
+                                body=binary_body or string_body,
+                                headers=self.headers
+                            )
             except Exception:
                 if DEBUG:
                     time_after_request = time.time()
