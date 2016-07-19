@@ -4,15 +4,13 @@ from distutils.core import setup
 
 setup(
 	# Basic package information.
-	name = 'Zendesk',
-	author = 'Max Gutman, Stefan Tjarks',
-	version = '1.1.1',
-	author_email = 'max@eventbrite.com',
+	name = 'zendesk',
+	version = '0.0.0',
 	packages = ['zendesk'],
 	include_package_data = True,
 	install_requires = ['httplib2', 'simplejson'],
 	license='LICENSE.txt',
-	url = 'https://github.com/maxeventbrite/zendesk/tree/master',
+	url = 'https://github.com/alexcchan/zendesk/tree/master',
 	keywords = 'zendesk api helpdesk',
 	description = 'Python API Wrapper for Zendesk',
 	classifiers = [
