@@ -187,6 +187,22 @@ mapping_table = {
         'path': '/triggers/{{trigger_id}}.json',
         'method': 'GET',
     },
+    'create_trigger': {
+        'path': '/triggers.json',
+        'method': 'POST',
+    },
+    'update_trigger': {
+        'path': '/triggers/{{trigger_id}}.json',
+        'method': 'PUT',
+    },
+    'reorder_triggers': {
+        'path': '/triggers/reorder.json',
+        'method': 'PUT',
+    },
+    'delete_trigger': {
+        'path': '/triggers/{{trigger_id}}.json',
+        'method': 'DELETE',
+    },
 
     # Automations
     'list_automations': {
