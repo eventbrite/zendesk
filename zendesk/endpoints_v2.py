@@ -173,6 +173,10 @@ mapping_table = {
         'path': '/views.json',
         'method': 'POST',
     },
+    'update_view': {
+        'path': '/views/{{view_id}}.json',
+        'method': 'PUT',
+    },
 
     # Triggers
     'list_triggers': {
