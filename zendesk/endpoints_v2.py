@@ -105,6 +105,16 @@ mapping_table = {
         'valid_params': ['start_time'],
         'method': 'GET',
     },
+    'list_incremental_tickets': {
+        'path': '/incremental/tickets.json',
+        'valid_params': ['start_time'],
+        'method': 'GET',
+    },
+    'list_incremental_ticket_events': {
+        'path': '/incremental/ticket_events.json',
+        'valid_params': ['start_time'],
+        'method': 'GET',
+    },
 
     # Ticket Forms
     'list_ticket_forms': {
