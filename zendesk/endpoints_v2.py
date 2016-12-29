@@ -107,7 +107,12 @@ mapping_table = {
     },
     'list_incremental_tickets': {
         'path': '/incremental/tickets.json',
-        'valid_params': ['start_time'],
+        'valid_params': ['include','start_time'],
+        'method': 'GET',
+    },
+    'list_incremental_tickets_sample': {
+        'path': '/incremental/tickets/sample.json',
+        'valid_params': ['include','start_time'],
         'method': 'GET',
     },
     'list_incremental_ticket_events': {
@@ -253,7 +258,7 @@ mapping_table = {
     },
     'show_many_users': {
         'path': '/users/show_many.json',
-        'valid_params': ['ids'],
+        'valid_params': ['ids','include'],
         'method': 'POST',
     },
     'create_user': {
