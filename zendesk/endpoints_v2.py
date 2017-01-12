@@ -881,6 +881,10 @@ mapping_table = {
         'path': '/tickets/{{ticket_id}}/macros/{{macro_id}}/apply.json',
         'method': 'GET',
     },
+    'list_macro_categories': {
+        'path': '/macros/categories.json',
+        'method': 'GET',
+    },
 
     # List Satisfaction Ratings
     'list_satisfaction_ratings': {
