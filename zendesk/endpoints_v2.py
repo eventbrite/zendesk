@@ -863,10 +863,12 @@ mapping_table = {
     # Macros
     'list_macros': {
         'path': '/macros.json',
+        'valid_params': ['access','active','category','group_id','only_viewable','sort_by','sort_order','include'],
         'method': 'GET',
     },
     'list_active_macros': {
         'path': '/macros/active.json',
+        'valid_params': ['access','category','group_id','sort_by','sort_order','include'],
         'method': 'GET',
     },
     'show_macro': {
