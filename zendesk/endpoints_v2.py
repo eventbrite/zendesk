@@ -879,7 +879,7 @@ mapping_table = {
         'path': '/macros/{{macro_id}}/apply.json',
         'method': 'GET',
     },
-    'apply_macro_for_ticket': {
+    'apply_macro_to_ticket': {
         'path': '/tickets/{{ticket_id}}/macros/{{macro_id}}/apply.json',
         'method': 'GET',
     },
