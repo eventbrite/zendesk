@@ -152,10 +152,12 @@ mapping_table = {
     # Views
     'list_views': {
         'path': '/views.json',
+        'valid_params': ['access','active','group_id','sort_by','sort_order'],
         'method': 'GET',
     },
     'list_active_views': {
         'path': '/views/active.json',
+        'valid_params': ['access','group_id','sort_by','sort_order'],
         'method': 'GET',
     },
     'show_view': {
