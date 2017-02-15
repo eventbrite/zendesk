@@ -250,7 +250,7 @@ class Zendesk(object):
                     logging.info('Zendesk time: %s url: %s' % (str(elapsed_time),url))
                 raise
             # Use a response handler to determine success/fail
-            return self._response_handler(response, content, status, ignore_location)
+            return self._response_handler(response, content, status, ignore_location, url)
 
         # Missing method is also not defined in our mapping table
         if api_call not in self.mapping_table:
@@ -260,7 +260,7 @@ class Zendesk(object):
         return call.__get__(self)
 
     @staticmethod
-    def _response_handler(response, content, status, ignore_location):
+    def _response_handler(response, content, status, ignore_location, url=None):
         """
         Handle response as callback
 
@@ -279,6 +279,8 @@ class Zendesk(object):
             headers = [u'{0}: {1}'.format(name,value).encode('utf-8') for (name,value) in response.iteritems()]
             logging.info('\n'.join(headers))
         if response_status != status:
+            if DEBUG and response_status == 404 and url is not None:
+                logging.info('HTTP %d for url: %s' % (response_status,url))
             raise ZendeskError(content, response_status)
 
         # Deserialize json content if content exist. In some cases Zendesk
