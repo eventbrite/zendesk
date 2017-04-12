@@ -513,7 +513,7 @@ mapping_table = {
     'show_many_organizations': {
         'path': '/organizations/show_many.json',
         'valid_params': ['ids','external_ids','include'],
-        'method': 'POST',
+        'method': 'GET',
     },
     'create_organization': {
         'path': '/organizations.json',
