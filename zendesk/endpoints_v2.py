@@ -260,7 +260,7 @@ mapping_table = {
     },
     'show_many_users': {
         'path': '/users/show_many.json',
-        'valid_params': ['ids','include'],
+        'valid_params': ['ids','external_ids','include'],
         'method': 'POST',
     },
     'create_user': {
@@ -509,6 +509,11 @@ mapping_table = {
     'show_organization': {
         'path': '/organizations/{{organization_id}}.json',
         'method': 'GET',
+    },
+    'show_many_organizations': {
+        'path': '/organizations/show_many.json',
+        'valid_params': ['ids','external_ids','include'],
+        'method': 'POST',
     },
     'create_organization': {
         'path': '/organizations.json',
