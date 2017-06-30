@@ -42,7 +42,7 @@ mapping_table = {
         'valid_params': ['ids'],
         'method': 'DELETE',
     },
-    'list_ticket_related': {
+    'show_ticket_related': {
         'path': '/tickets/{{ticket_id}}/related.json',
         'method': 'GET',
     },
@@ -256,6 +256,10 @@ mapping_table = {
     'show_user': {
         'path': '/users/{{user_id}}.json',
         'valid_params': ['include'],
+        'method': 'GET',
+    },
+    'show_user_related': {
+        'path': '/users/{{user_id}}/related.json',
         'method': 'GET',
     },
     'show_many_users': {
