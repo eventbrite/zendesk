@@ -31,9 +31,9 @@ try:
     import simplejson as json
 except:
     import json
-from httplib import responses
-from endpoints import mapping_table as mapping_table_v1
-from endpoints_v2 import mapping_table as mapping_table_v2
+from http.client import responses
+from .endpoints import mapping_table as mapping_table_v1
+from .endpoints_v2 import mapping_table as mapping_table_v2
 
 V2_COLLECTION_PARAMS = [
         'page',
@@ -71,7 +71,7 @@ def get_id_from_url(url):
 def clean_kwargs(kwargs):
     """Format the kwargs to conform to API"""
 
-    for key, value in kwargs.iteritems():
+    for key, value in kwargs.items():
         if hasattr(value, '__iter__'):
             kwargs[key] = ','.join(map(str, value))
 
@@ -181,7 +181,7 @@ class Zendesk(object):
                                     "'%s'" % (api_call, kw))
             else:
                 clean_kwargs(kwargs)
-                url += '?' + urllib.urlencode(kwargs)
+                url += '?' + urllib.parse.urlencode(kwargs)
 
             # the 'search' endpoint in an open Zendesk site doesn't return a 401
             # to force authentication. Inject the credentials in the headers to
