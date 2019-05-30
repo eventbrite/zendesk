@@ -1224,10 +1224,12 @@ mapping_table = {
     },
     'list_app_installations': {
         'path': '/apps/installations.json',
+        'valid_params': ['include'],
         'method': 'GET',
     },
     'show_app_installation': {
         'path': '/apps/installations/{{installation_id}}.json',
+        'valid_params': ['include'],
         'method': 'GET',
     },
 }
