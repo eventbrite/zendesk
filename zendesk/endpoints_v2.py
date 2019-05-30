@@ -1209,6 +1209,27 @@ mapping_table = {
         'method': 'DELETE',
     },
 
+    # Apps
+    'list_apps': {
+        'path': '/apps.json',
+        'method': 'GET',
+    },
+    'show_app': {
+        'path': '/apps/{{app_id}}.json',
+        'method': 'GET',
+    },
+    'list_owned_apps': {
+        'path': '/apps/owned.json',
+        'method': 'GET',
+    },
+    'list_app_installations': {
+        'path': '/apps/installations.json',
+        'method': 'GET',
+    },
+    'show_app_installation': {
+        'path': '/apps/installations/{{installation_id}}.json',
+        'method': 'GET',
+    },
 }
 
 # Patch mapping table with correct HTTP Status expected
