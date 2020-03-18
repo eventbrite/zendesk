@@ -361,6 +361,24 @@ mapping_table = {
         'method': 'GET',
     },
 
+    # Targets
+    'list_targets': {
+        'path': '/targets.json',
+        'method':'GET',
+    },
+    'show_target': {
+        'path': '/targets/{{target_id}}.json',
+        'method': 'GET',
+    },
+    'create_target': {
+        'path': '/targets.json',
+        'method':'POST',
+    },
+    'update_target': {
+        'path': '/targets/{{target_id}}.json',
+        'method': 'PUT',
+    },
+
     # User Identities
     'list_user_identities': {
         'path': '/users/{{user_id}}/identities.json',
