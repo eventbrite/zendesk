@@ -378,6 +378,11 @@ mapping_table = {
         'path': '/targets/{{target_id}}.json',
         'method': 'PUT',
     },
+    'delete_target': {
+        'path': '/targets/{{target_id}}.json',
+        'method': 'DELETE',
+        'status': 204,
+    },
 
     # User Identities
     'list_user_identities': {
