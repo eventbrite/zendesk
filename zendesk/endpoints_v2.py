@@ -588,6 +588,11 @@ mapping_table = {
         'valid_params': ['query'],
         'method': 'GET',
     },
+    'search_export': {
+        'path': '/search/export.json',
+        'valid_params': ['query','filter[type]'],
+        'method': 'GET',
+    },
     'anonymous_search': {
         'path': '/portal_search.json',
         'valid_params': ['query'],

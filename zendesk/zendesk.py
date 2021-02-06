@@ -46,6 +46,9 @@ V2_COLLECTION_PARAMS = [
         'page',
         'per_page',
         'sort_order',
+        'page[after]',
+        'page[before]',
+        'page[size]',
     ]
 DEBUG = True
 PREEMPTIVE_AUTH = False
