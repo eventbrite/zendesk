@@ -194,6 +194,17 @@ mapping_table = {
         'path': '/views/{{view_id}}.json',
         'method': 'PUT',
     },
+    'delete_view': {
+        'path': '/views/{{view_id}}.json',
+        'method': 'DELETE',
+        'status': 204,
+    },
+    'delete_many_views': {
+        'path': 'views/destroy_many.json',
+        'valid_params': ['ids'],
+        'method': 'DELETE',
+        'status': 204,
+    },
 
     # Triggers
     'list_triggers': {
